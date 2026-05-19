@@ -1,0 +1,49 @@
+[
+  {
+    "id": "top-10-react-best-practices-2026",
+    "title": "Top 10 React Best Practices in 2026",
+    "slug": "top-10-react-best-practices-2026",
+    "excerpt": "Explore the modern architectural patterns, custom hooks designs, and compiler optimizations that are dominating React applications in 2026.",
+    "category": "React",
+    "tags": [
+      "React",
+      "Web Dev",
+      "JavaScript",
+      "Frontend",
+      "2026"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1000&q=80",
+    "content": "# Top 10 React Best Practices in 2026\n\nReact has evolved significantly over the years, and with the latest features, the way we build interfaces has reached new heights of performance and maintainability. In this post, we discuss the top 10 best practices you should follow for production-ready React apps in 2026.\n\n## 1. Embrace React Compiler (Zero-Dependency Memoization)\nGone are the days of manual `useMemo` and `useCallback` micro-optimizations. In 2026, the automatic compiler automatically optimizes component renders.\n```javascript\n// No need for manual useMemo, React Compiler handles this automatically!\nconst ProductList = ({ items }) => {\n  return (\n    <ul>\n      {items.map(item => <li key={item.id}>{item.name}</li>)}\n    </ul>\n  );\n};\n```\n\n## 2. Server Components by Default\nAdopt React Server Components (RSC) to fetch data directly inside server component functions. This keeps your client bundle light and fast!\n\n## 3. Strict State Colocation\nKeep state as close to where it is used as possible. Avoid massive global contexts unless absolutely necessary for universal states.\n\n## 4. Custom Hook Abstractions\nEncapsulate complex UI logics and side-effects into elegant custom hooks to promote clean, reusable codebases.\n\n## 5. Optimized Asset Loading\nLeverage modern image lazy-loading, responsive srcsets, and vector SVGs to maintain high Lighthouse scores and blazing-fast loading.\n\n## Conclusion\nFollowing these rules will elevate your personal development practices and deliver exceptional, smooth software solutions.",
+    "date": "2026-05-18T09:00:00Z",
+    "readingTime": "5 min read",
+    "published": true,
+    "author": {
+      "name": "Ritesh Prasad",
+      "role": "Software Engineer"
+    }
+  },
+  {
+    "id": "spring-boot-vs-express-js",
+    "title": "Spring Boot vs Express.js: Finding the Perfect Backend",
+    "slug": "spring-boot-vs-express-js",
+    "excerpt": "An in-depth, hands-on architectural comparison between Spring Boot's robust structured framework and Express.js's lightweight flexibility.",
+    "category": "Java",
+    "tags": [
+      "Spring Boot",
+      "Express",
+      "Backend",
+      "Architecture",
+      "Java",
+      "NodeJS"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&q=80",
+    "content": "# Spring Boot vs Express.js: Finding the Perfect Backend\n\nChoosing the right backend framework is critical to the scaling and longevity of any web application. Today, we put Java's powerhouse **Spring Boot** and Node.js's favorite **Express.js** side-by-side.\n\n## Spring Boot: Enterprise Scaling\nSpring Boot excels in massive, highly-structured applications. With features like dependency injection, JPA, and deep type safety, it's designed for stable engineering.\n```java\n@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    @GetMapping\n    public List<User> getUsers() {\n        return userService.findAll();\n    }\n}\n```\n\n## Express.js: Rapid Adaptability\nExpress.js is lightweight, unopinionated, and highly flexible. Ideal for startups and small-to-medium systems, it runs on JavaScript and leverages asynchronous event loops.\n```javascript\nconst express = require('express');\nconst app = express();\n\napp.get('/api/users', (req, res) => {\n  res.json(users);\n});\n```\n\n## Which Should You Choose?\n- Choose **Spring Boot** if you need high security, enterprise architecture, or robust multithreading.\n- Choose **Express.js** if you need fast MVPs, unified JS stack (MERN), or highly flexible server design.",
+    "date": "2026-05-11T09:00:00Z",
+    "readingTime": "6 min read",
+    "published": true,
+    "author": {
+      "name": "Ritesh Prasad",
+      "role": "Software Engineer"
+    }
+  }
+]
