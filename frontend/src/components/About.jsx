@@ -1,15 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Cpu, Award, BookOpen, Heart, CheckCircle2, Download, User } from 'lucide-react';
 import './About.css';
-
-const aboutImages = [
-  "/user-portrait-landing.jpg",
-  "/college-bnw.jpg",
-  "/vaishno-devi-peak.jpg",
-  "/mussoorie.jpg",
-  "/festival-lights.jpg"
-];
 
 const stats = [
   { id: 1, value: "10+", label: "Projects Completed", icon: Cpu },
@@ -28,16 +19,6 @@ const highlights = [
 ];
 
 const About = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Auto transition images every 3 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % aboutImages.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section id="about" className="about-section section-container">
       {/* Background spotlights */}
@@ -62,29 +43,18 @@ const About = () => {
       </motion.div>
 
       <div className="about-grid">
-        {/* Left Side: Animated Image Slider */}
+        {/* Left Side: Static Premium Portrait */}
         <div className="about-left">
           <div className="slideshow-container glow-box">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImageIndex}
-                src={aboutImages[currentImageIndex]}
-                alt={`Ritesh Prasad Portfolio Slide ${currentImageIndex}`}
-                className="slideshow-image"
-                initial={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 1.05, filter: "blur(5px)" }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-              />
-            </AnimatePresence>
-            <div className="slideshow-indicator-bar">
-              {aboutImages.map((_, index) => (
-                <div 
-                  key={index} 
-                  className={`indicator-dot ${currentImageIndex === index ? 'active' : ''}`}
-                />
-              ))}
-            </div>
+            <motion.img
+              src="/user-portrait.jpg"
+              alt="Ritesh Prasad Portfolio Portrait"
+              className="slideshow-image"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            />
           </div>
         </div>
 

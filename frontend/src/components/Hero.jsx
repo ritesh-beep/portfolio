@@ -103,7 +103,7 @@ const Hero = () => {
         >
           <div className="profile-photo-glowing-ring">
             <img 
-              src="/user-portrait-landing.jpg" 
+              src="/user-portrait.jpg" 
               alt="Ritesh Prasad" 
               className="profile-photo-img"
             />
