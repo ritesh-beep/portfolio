@@ -61,7 +61,7 @@ const Blog = () => {
   const [likedBlogs, setLikedBlogs] = useState({});
   const [bookmarkedBlogs, setBookmarkedBlogs] = useState({});
 
-  const API_URL = "http://localhost:5000/api/blogs";
+  const API_URL = "https://portfolio-2k7s.vercel.app/api/blogs";
 
   // Fetch blogs from backend
   const fetchBlogs = async () => {
@@ -85,13 +85,13 @@ const Blog = () => {
 
   // Filter & Search Logic
   const filteredBlogs = blogs.filter(blog => {
-    const matchesSearch = 
+    const matchesSearch =
       blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
       blog.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-      
-    const matchesCategory = 
-      selectedCategory === "All" || 
+
+    const matchesCategory =
+      selectedCategory === "All" ||
       blog.category.toLowerCase() === selectedCategory.toLowerCase();
 
     return matchesSearch && matchesCategory;
@@ -148,7 +148,7 @@ const Blog = () => {
         body: JSON.stringify({ published: updatedPublishState })
       });
       if (!res.ok) throw new Error("Failed to toggle publish");
-      
+
       setBlogs(prev => prev.map(b => b.id === blog.id ? { ...b, published: updatedPublishState } : b));
       setAdminStatus(updatedPublishState ? "Article Published!" : "Article Unpublished!");
       setTimeout(() => setAdminStatus(""), 4000);
@@ -185,7 +185,7 @@ const Blog = () => {
       {/* Visual glowing spotlight */}
       <div className="blog-radial-glow"></div>
 
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -208,10 +208,10 @@ const Blog = () => {
         <button className="admin-toggle-btn glass glow-box" onClick={() => setIsAdminOpen(!isAdminOpen)}>
           {isAdminOpen ? "Close Admin Dashboard" : "🛠️ Open AI Engine Admin"}
         </button>
-        
+
         <AnimatePresence>
           {isAdminOpen && (
-            <motion.div 
+            <motion.div
               className="admin-dashboard-panel glass"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
@@ -237,15 +237,15 @@ const Blog = () => {
                     <span className="admin-row-title">{b.title}</span>
                     <span className="admin-row-category">{b.category}</span>
                     <div className="admin-row-controls">
-                      <button 
-                        onClick={() => togglePublish(b)} 
+                      <button
+                        onClick={() => togglePublish(b)}
                         className={`admin-icon-btn ${b.published ? 'published' : 'unpublished'}`}
                         title={b.published ? "Unpublish Post" : "Publish Post"}
                       >
                         {b.published ? <Eye size={16} /> : <EyeOff size={16} />}
                       </button>
-                      <button 
-                        onClick={() => deleteBlog(b.id)} 
+                      <button
+                        onClick={() => deleteBlog(b.id)}
                         className="admin-icon-btn delete"
                         title="Delete Post"
                       >
@@ -264,9 +264,9 @@ const Blog = () => {
       <div className="blog-filters-bar">
         <div className="search-box glass glow-box">
           <Search size={18} className="search-icon" />
-          <input 
-            type="text" 
-            placeholder="Search by keywords, tags, topics..." 
+          <input
+            type="text"
+            placeholder="Search by keywords, tags, topics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -286,7 +286,7 @@ const Blog = () => {
 
       {/* Featured Blog Post */}
       {featuredBlog && searchQuery === "" && selectedCategory === "All" && (
-        <motion.div 
+        <motion.div
           className="featured-blog-card glass glow-box"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -361,7 +361,7 @@ const Blog = () => {
       )}
 
       {/* Newsletter Block */}
-      <motion.div 
+      <motion.div
         className="newsletter-section glass glow-box"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -373,10 +373,10 @@ const Blog = () => {
           <p>Get high-quality weekly coding articles, frameworks updates, and software insights delivered directly to your inbox.</p>
         </div>
         <form className="newsletter-form" onSubmit={handleSubscribe}>
-          <input 
-            type="email" 
-            placeholder="Enter your email address" 
-            required 
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            required
             value={emailInput}
             onChange={(e) => setEmailInput(e.target.value)}
           />
@@ -392,14 +392,14 @@ const Blog = () => {
       {/* Full-Screen Blog Detail Lightbox Modal */}
       <AnimatePresence>
         {activeBlog && (
-          <motion.div 
+          <motion.div
             className="blog-detail-modal-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveBlog(null)}
           >
-            <motion.div 
+            <motion.div
               className="blog-detail-container glass"
               initial={{ scale: 0.95, y: 30 }}
               animate={{ scale: 1, y: 0 }}
@@ -417,7 +417,7 @@ const Blog = () => {
                 <div className="blog-detail-header-overlay">
                   <span className="blog-detail-cat">{activeBlog.category}</span>
                   <h1 className="blog-detail-title">{activeBlog.title}</h1>
-                  
+
                   <div className="blog-detail-meta-row">
                     <div className="detail-author">
                       <div className="detail-avatar">{activeBlog.author.name.charAt(0)}</div>
@@ -437,7 +437,7 @@ const Blog = () => {
               <div className="blog-detail-body">
                 {/* Bookmarks, Likes & Share Controls */}
                 <div className="blog-detail-floating-actions">
-                  <button 
+                  <button
                     className={`detail-action-btn ${likedBlogs[activeBlog.id] ? 'active' : ''}`}
                     onClick={() => toggleLike(activeBlog.id)}
                     title="Like Post"
@@ -445,7 +445,7 @@ const Blog = () => {
                     <Heart size={18} fill={likedBlogs[activeBlog.id] ? "#ef4444" : "none"} />
                     <span>{likedBlogs[activeBlog.id] ? 25 : 24}</span>
                   </button>
-                  <button 
+                  <button
                     className={`detail-action-btn ${bookmarkedBlogs[activeBlog.id] ? 'active' : ''}`}
                     onClick={() => toggleBookmark(activeBlog.id)}
                     title="Bookmark Post"
